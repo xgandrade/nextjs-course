@@ -7,7 +7,8 @@ import { NavbarProps } from "./types";
 
 export const Navbar = ({ className, ...props }: NavbarProps) => {
     return (
-        <nav className={cn("flex h-screen flex-col bg-slate-900 border-r border-indigo-400/40 hover:border-indigo-400/80 w-72 p-2 text-slate-300", className)} {...props}>
+        <nav
+            className={cn("fixed top-0 left-0 flex h-screen flex-col bg-slate-900 border-r border-indigo-400/40 hover:border-indigo-400/80 w-72 p-2 text-slate-300", className)} {...props}>
             <div className="flex items-center justify-center my-4">
                 <Image
                     src="http://1000marcas.net/wp-content/uploads/2019/12/Heineken-Logo.png"
