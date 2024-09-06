@@ -6,8 +6,6 @@ const prisma = new PrismaClient();
 const isDev = process.env.NODE_ENV === "development";
 
 async function main() {
-    console.log(`Start seeding ...`);
-
     await seedArticles();
 }
 
@@ -33,8 +31,6 @@ async function seedArticles() {
                 publishedAt: new Date(article.publish_date),
             },
         });
-
-        console.log(`*** Created article with id: ${record.id}, title: ${record.title}`);
     }
 }
 
