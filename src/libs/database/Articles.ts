@@ -19,6 +19,11 @@ const Article = {
         });
 
         return records;
+    },
+    count: async ({ where = {} }) => {
+        return await prisma.article.count({
+            where
+        });
     }
 };
 
