@@ -5,6 +5,9 @@ const nextConfig = {
             {
                 hostname: '1000marcas.net',
             },
+            {
+                hostname: 'raw.githubusercontent.com',
+            }
         ]
     }
 };
