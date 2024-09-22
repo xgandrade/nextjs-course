@@ -57,6 +57,9 @@ const ArticleService = {
                 offset
             }
         };
+    },
+    getArticleBySlug: async (slug: string) => {
+        return Article.getOne({ where: { slug } });
     }
 }
 
