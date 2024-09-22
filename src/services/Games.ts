@@ -17,6 +17,25 @@ const GamesService = {
                 totalPages,
             }
         };
+    },
+
+    getRandomGames: async (limit: number = 10) => {
+        const total = await Games.count({});
+        const offset = Math.max(0, Math.floor(Math.random() * total) - limit);
+        const data = await Games.get({ limit, offset });
+        const sorted = data.sort(() => Math.random() > 0.5 ? 1 : -1);
+        const totalPages = Math.ceil(total / limit);
+
+        return {
+            data: sorted,
+            metadata: {
+                page: 1,
+                limit,
+                offset,
+                total,
+                totalPages,
+            }
+        };
     }
 }
 
