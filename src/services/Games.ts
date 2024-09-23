@@ -18,7 +18,6 @@ const GamesService = {
             }
         };
     },
-
     getRandomGames: async (limit: number = 10) => {
         const total = await Games.count({});
         const offset = Math.max(0, Math.floor(Math.random() * total) - limit);
@@ -36,6 +35,9 @@ const GamesService = {
                 totalPages,
             }
         };
+    },
+    getGameBySlug: async (slug: string) => {
+        return await Games.getOne({ where: { slug } });
     }
 }
 

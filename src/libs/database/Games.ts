@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Games, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -6,6 +6,9 @@ const MAX_RECORDS = 50;
 const MIN_OFFSET = 0;
 
 const Games = {
+    getOne: async ({ where }: { where: Pick<Games, "slug"> | Pick<Games, "id"> }) => {
+        return await prisma.games.findUnique({ where });
+    },
     get: async ({ where = {}, orderBy = {}, limit = 10, offset = 0 }) => {
 
         const take = Math.min(limit, MAX_RECORDS);

@@ -3,6 +3,7 @@ import { Pagination } from "@/components/Pagination/Pagination";
 import { getGameImage } from "@/helpers/games";
 import GamesService from "@/services/Games";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Games({ searchParams }: { searchParams?: { page?: string, limit?: string } }) {
     const currentPage = Number(searchParams?.page) || 1;
@@ -17,7 +18,10 @@ export default async function Games({ searchParams }: { searchParams?: { page?: 
                 <div className="grid grid-cols-4 gap-x-4 gap-y-12">
                     {games.data.map((game) => {
                         return (
-                            <div key={game.slug} className="flex flex-center flex-col relative overflow-hidden">
+                            <Link
+                                href={`/games/${game.slug}`}
+                                key={game.slug}
+                                className="flex flex-center flex-col relative overflow-hidden">
                                 <div className="h-full w-full ">
                                     <Image
                                         className="w-auto h-full object-cover transition duration-500 hover:scale-105"
@@ -30,7 +34,7 @@ export default async function Games({ searchParams }: { searchParams?: { page?: 
                                 <p className="font-center pt-2 pb-2 px-2  w-full">
                                     {game.title}
                                 </p>
-                            </div>
+                            </Link>
                         )
                     })}
                 </div>
