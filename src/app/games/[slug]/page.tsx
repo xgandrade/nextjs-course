@@ -6,7 +6,6 @@ import Image from "next/image";
 export default async function GameDetailPage({ params }: { params: { slug: string } }) {
     const slug = params.slug;
     const game = await GameService.getGameBySlug(slug);
-    console.log('Game', game)
 
     if (!game) {
         return (

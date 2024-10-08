@@ -2,13 +2,10 @@ import Article from "@/libs/database/Articles";
 
 const HOME_LATEST_COUNT = 4;
 
-const sleep = async (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 
 const ArticleService = {
     getArticles: async (page: number = 1, limit: number = 10) => {
-
-        sleep(Math.random() * 10000);
-
         const offset = (page - 1) * limit;
         const data = await Article.get({ limit, offset });
         const total = await Article.count({});
