@@ -1,4 +1,5 @@
-import { Games, PrismaClient } from "@prisma/client";
+import type { Games } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
