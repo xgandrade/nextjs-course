@@ -1,8 +1,6 @@
-import type { Article } from "@prisma/client";
-import { PrismaClient } from "@prisma/client";
+import { type Article, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-
 const MAX_RECORDS = 50;
 const MIN_OFFSET = 0;
 
