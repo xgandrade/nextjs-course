@@ -5,7 +5,7 @@ import { NavbarList } from "./NavbarList";
 import { NavbarListItemLink } from "./NavbarListItemLink";
 import { NavbarProps } from "./types";
 
-export const Navbar = ({ className, ...props }: NavbarProps) => {
+export const Navbar = ({ className, user, ...props }: NavbarProps) => {
     return (
         <nav
             className={cn("fixed top-0 left-0 flex h-screen flex-col bg-slate-900 border-r border-indigo-400/40 hover:border-indigo-400/80 w-72 p-2 text-slate-300", className)} {...props}>
@@ -33,9 +33,14 @@ export const Navbar = ({ className, ...props }: NavbarProps) => {
                 </NavbarListItemLink>
             </NavbarList>
             <NavbarList>
-                <NavbarListItemLink href={"/user"}>
-                    <UserIcon className="w-4 h-4" />User
-                </NavbarListItemLink>
+                {user ? (
+                    <NavbarListItemLink href={"/user"}>
+                        <UserIcon className="w-4 h-4" /> {user.name}
+                    </NavbarListItemLink>
+                ) :
+                    <NavbarListItemLink href={"/auth/sign-in"}>
+                        <UserIcon className="w-4 h-4" /> LogIn
+                    </NavbarListItemLink>}
             </NavbarList>
         </nav>
     )

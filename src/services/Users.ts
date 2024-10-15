@@ -1,4 +1,4 @@
-import { createHash } from "@/helpers/hash";
+import { createHash, verifyHash } from "@/helpers/hash";
 import Users from "@/libs/database/Users";
 
 
@@ -13,17 +13,16 @@ const UsersService = {
         return Users.create({ ...data, password: passwordHash });
     },
 
-    // signIn: async (data: any) => {
-    //     const user = await Users.getOne({ email: data.email });
-    //     if (!user) {
-    //         return null;
-    //     }
-    //     const isValid = await verifyHash(data.password, user.password);
-    //     if (!isValid) {
-    //         return null;
-    //     }
-    //     return user;
-    // },
+    signIn: async (data: any) => {
+
+        const record = await Users.findByEmail(data.email);
+        if (!record) return null;
+
+        const isValidPassword = await verifyHash(data.password, record.password);
+        if (!isValidPassword) return null;
+
+        return { ...record, password: null };
+    },
 };
 
 export default UsersService;
