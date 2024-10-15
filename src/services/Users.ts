@@ -12,6 +12,18 @@ const UsersService = {
 
         return Users.create({ ...data, password: passwordHash });
     },
+
+    // signIn: async (data: any) => {
+    //     const user = await Users.getOne({ email: data.email });
+    //     if (!user) {
+    //         return null;
+    //     }
+    //     const isValid = await verifyHash(data.password, user.password);
+    //     if (!isValid) {
+    //         return null;
+    //     }
+    //     return user;
+    // },
 };
 
 export default UsersService;

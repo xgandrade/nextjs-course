@@ -1,6 +1,8 @@
 "use server";
 
+import { getZodErrors } from "@/helpers/zod";
 import UsersService from "@/services/Users";
+import { redirect } from "next/navigation";
 import zod from "zod";
 
 export type SignUpError = {
@@ -13,21 +15,6 @@ export type SignUpError = {
 export type SignUpState = {
     isValid?: boolean;
     errors: SignUpError;
-}
-
-const getZodErrors = (error: any) => {
-
-    const isZodError = error instanceof zod.ZodError
-    if (!isZodError) return null;
-
-    const { fieldErrors } = error.flatten();
-
-    const errors = Object.keys(fieldErrors).reduce((acc, key) => {
-        const message = fieldErrors[key]?.at(0);
-        return { ...acc, [key]: message };
-    }, {});
-
-    return errors;
 }
 
 const validateSignUpForm = (formData: FormData) => {
@@ -68,6 +55,5 @@ export const handleSignUpForm = async (prevState: any, formData: FormData) => {
     };
 
     await UsersService.signUp(data);
-
-    return { isValid: true, errors: {} };
+    redirect("/");
 }
