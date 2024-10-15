@@ -1,7 +1,10 @@
-import { GamepadIcon, HomeIcon, MedalIcon, RouteIcon, UserIcon } from "@/components";
+import { handleSignOutForm } from "@/app/auth/sign-out/actions";
+import { FormButton, GamepadIcon, HomeIcon, MedalIcon, RouteIcon, UserIcon } from "@/components";
 import { cn } from "@/helpers/cn";
 import Image from "next/image";
+import { ExitIcon } from "../Icons/icons/ExitIcon";
 import { NavbarList } from "./NavbarList";
+import { NavbarListItem } from "./NavbarListItem";
 import { NavbarListItemLink } from "./NavbarListItemLink";
 import { NavbarProps } from "./types";
 
@@ -32,16 +35,25 @@ export const Navbar = ({ className, user, ...props }: NavbarProps) => {
                     <RouteIcon className="w-4 h-4" />Walkthrough
                 </NavbarListItemLink>
             </NavbarList>
-            <NavbarList>
-                {user ? (
-                    <NavbarListItemLink href={"/user"}>
-                        <UserIcon className="w-4 h-4" /> {user.name}
+            {user ? (
+                <NavbarList>
+                    <NavbarListItemLink href="/user">
+                        <UserIcon className="w-4 h4" /> {user.name}
                     </NavbarListItemLink>
-                ) :
-                    <NavbarListItemLink href={"/auth/sign-in"}>
-                        <UserIcon className="w-4 h-4" /> LogIn
-                    </NavbarListItemLink>}
-            </NavbarList>
+                    <NavbarListItem>
+                        <ExitIcon className="w-4 h4" />
+                        <FormButton action={handleSignOutForm}>
+                            Logout
+                        </FormButton>
+                    </NavbarListItem>
+                </NavbarList>
+            ) : (
+                <NavbarList>
+                    <NavbarListItemLink href="/auth/sign-in">
+                        <UserIcon className="w-4 h4" /> Login
+                    </NavbarListItemLink>
+                </NavbarList>
+            )}
         </nav>
     )
 }

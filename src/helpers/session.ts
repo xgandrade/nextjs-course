@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { decrypt, encrypt } from "./jwt";
 
-const generateExpires = () => new Date(Date.now() + 60 * 1000);
+const generateExpires = () => new Date(Date.now() + 60 * 60 * 1000 * 2);
 const SESSION_NAME = "session";
 
 export const createSession = (jwt: string) => {
@@ -30,4 +30,10 @@ export const updateSession = async () => {
     };
 
     return updateSession;
+}
+
+/// Destroy the session
+export const logout = async () => {
+    console.log("Destroying session...");
+    cookies().set(SESSION_NAME, "", { expires: new Date(0) });
 }
