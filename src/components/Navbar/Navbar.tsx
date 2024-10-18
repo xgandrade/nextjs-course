@@ -1,8 +1,7 @@
 import { handleSignOutForm } from "@/app/auth/sign-out/actions";
-import { FormButton, GamepadIcon, HomeIcon, MedalIcon, RouteIcon, UserIcon } from "@/components";
+import { ExitIcon, FormButton, GamepadIcon, HomeIcon, MedalIcon, RouteIcon, UserIcon } from "@/components";
 import { cn } from "@/helpers/cn";
 import Image from "next/image";
-import { ExitIcon } from "../Icons/icons/ExitIcon";
 import { NavbarList } from "./NavbarList";
 import { NavbarListItem } from "./NavbarListItem";
 import { NavbarListItemLink } from "./NavbarListItemLink";

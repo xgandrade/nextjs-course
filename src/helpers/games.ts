@@ -3,3 +3,7 @@ const BASE_IMAGE_URL = 'https://raw.githubusercontent.com/emersonbroga/nintendo-
 export const getGameImage = (image: string) => {
     return `${BASE_IMAGE_URL}${image}`;
 }
+
+export const getGameUrl = (slug: string) => {
+    return `/games/${slug}`;
+}
