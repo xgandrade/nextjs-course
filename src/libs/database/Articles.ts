@@ -5,11 +5,13 @@ const MAX_RECORDS = 50;
 const MIN_OFFSET = 0;
 
 const Article = {
+
     getOne: async ({ where }: { where: Pick<Article, "slug"> | Pick<Article, "id"> }) => {
         const records = await prisma.article.findUnique({ where });
 
         return records;
     },
+
     get: async ({ where = {}, orderBy = {}, limit = 10, offset = 0 }) => {
 
         const take = Math.min(limit, MAX_RECORDS);
@@ -24,11 +26,13 @@ const Article = {
 
         return records;
     },
+
     count: async ({ where = {} }) => {
         return await prisma.article.count({
             where
         });
-    }
+    },
+
 };
 
 export default Article;

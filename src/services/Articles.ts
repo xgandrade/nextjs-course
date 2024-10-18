@@ -2,9 +2,8 @@ import Article from "@/libs/database/Articles";
 
 const HOME_LATEST_COUNT = 4;
 
-
-
 const ArticleService = {
+
     getArticles: async (page: number = 1, limit: number = 10) => {
         const offset = (page - 1) * limit;
         const data = await Article.get({ limit, offset });
@@ -22,6 +21,7 @@ const ArticleService = {
             }
         };
     },
+
     getHomeArticles: async (page: number = 1, limit: number = 10) => {
         const offset = (page - 1) * limit + HOME_LATEST_COUNT;
         const orderBy = { publishedAt: "desc" };
@@ -40,6 +40,7 @@ const ArticleService = {
             }
         };
     },
+
     getHomeLatestArticles: async () => {
         const limit = HOME_LATEST_COUNT;
         const offset = 0;
@@ -60,9 +61,11 @@ const ArticleService = {
             }
         };
     },
+
     getArticleBySlug: async (slug: string) => {
         return Article.getOne({ where: { slug } });
-    }
+    },
+
 }
 
 export default ArticleService;

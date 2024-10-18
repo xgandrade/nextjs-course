@@ -2,6 +2,7 @@ import { getRandomInArrayInRange } from "@/helpers/math";
 import Games from "@/libs/database/Games";
 
 const GamesService = {
+
     getGamesList: async (page: number = 1, limit: number = 10) => {
         const offset = (page - 1) * limit;
         const data = await Games.get({ limit, offset });
@@ -19,6 +20,7 @@ const GamesService = {
             }
         };
     },
+
     getRandomGames: async (limit: number = 10) => {
         const total = await Games.count({});
         const offset = Math.max(0, Math.floor(Math.random() * total) - limit);
@@ -38,9 +40,11 @@ const GamesService = {
             }
         };
     },
+
     getGameBySlug: async (slug: string) => {
         return await Games.getOne({ where: { slug } });
-    }
+    },
+
 }
 
 export default GamesService;
