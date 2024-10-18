@@ -15,7 +15,7 @@ const UsersService = {
         });
     },
 
-    signIn: async (data: Pick<User, "name" | "email" | "password">) => {
+    signIn: async (data: Pick<User, "email" | "password">) => {
 
         const record = await Users.findByEmail(data.email);
         if (!record) return null;

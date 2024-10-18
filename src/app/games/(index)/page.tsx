@@ -1,6 +1,6 @@
 import { PageWrapper } from "@/components";
 import { Pagination } from "@/components/Pagination/Pagination";
-import { getGameImage } from "@/helpers/games";
+import { getGameImage, getGameUrl } from "@/helpers/games";
 import GamesService from "@/services/Games";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +19,7 @@ export default async function Games({ searchParams }: { searchParams?: { page?: 
                     {games.data.map((game) => {
                         return (
                             <Link
-                                href={`/games/${game.slug}`}
+                                href={getGameUrl(game.slug)}
                                 key={game.slug}
                                 className="flex flex-center flex-col relative overflow-hidden">
                                 <div className="h-full w-full ">
