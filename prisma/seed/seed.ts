@@ -99,12 +99,27 @@ async function seedGamesAndGenres() {
 
 }
 
-main()
-    .then(async () => {
-        await prisma.$disconnect();
-    })
-    .catch(async (e) => {
-        console.error(e);
-        await prisma.$disconnect();
-        process.exit(1);
-    });
+// main()
+//     .then(async () => {
+//         await prisma.$disconnect();
+//     })
+//     .catch(async (e) => {
+//         console.error(e);
+//         await prisma.$disconnect();
+//         process.exit(1);
+//     });
+
+
+export const truncate = async () => {
+    console.log('Truncating Articles database...');
+    await truncateArticles();
+    console.log('Truncating Games and Genres database...');
+    await truncateGamesAndGenres();
+}
+
+export const seed = async () => {
+    console.log('Seeding Articles');
+    await seedArticles();
+    console.log('Seeding Games and Genres');
+    await seedGamesAndGenres();
+}
