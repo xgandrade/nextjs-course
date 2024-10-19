@@ -17,14 +17,12 @@ const Article = {
         const take = Math.min(limit, MAX_RECORDS);
         const skip = Math.max(offset, MIN_OFFSET);
 
-        const records = await prisma.article.findMany({
+        return await prisma.article.findMany({
             where,
             orderBy,
             take,
             skip,
         });
-
-        return records;
     },
 
     count: async ({ where = {} }) => {
