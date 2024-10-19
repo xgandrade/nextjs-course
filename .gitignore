@@ -40,6 +40,4 @@ next-env.d.ts
 /prisma/db/
 
 # part 1
-/src/app/
-/src/components/
-/src/data/
+/src/
