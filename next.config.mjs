@@ -13,7 +13,8 @@ const nextConfig = {
                 hostname: 'raw.githubusercontent.com',
             }
         ]
-    }
+    },
+    output: 'standalone',
 };
 
 export default nextConfig;
