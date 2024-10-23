@@ -1,6 +1,8 @@
 name: "CI (Integração Continua): Main Workflow"
 
 on:
+  push:
+    branches: [master, docker]
   pull_request:
     types: [opened, synchronize]
 
