@@ -1,0 +1,15 @@
+name: "CD (Entrega/Delivery Continua): Main Workflow"
+
+on:
+  push:
+    branches: [master, docker]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Deploy
+        run: | 
+          npm install
+          npm deploy:prod
