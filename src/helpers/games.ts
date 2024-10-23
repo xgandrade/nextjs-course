@@ -1,9 +1,10 @@
-const BASE_IMAGE_URL = 'https://raw.githubusercontent.com/emersonbroga/nintendo-64-games/main/images/';
+const BASE_IMAGE_URL =
+  "https://raw.githubusercontent.com/emersonbroga/nintendo-64-games/main/images/";
 
 export const getGameImage = (image: string) => {
-    return `${BASE_IMAGE_URL}${image}`;
-}
+  return `${BASE_IMAGE_URL}${image}`;
+};
 
 export const getGameUrl = (slug: string) => {
-    return `/games/${slug}`;
-}
+  return `/games/${slug}`;
+};

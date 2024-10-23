@@ -3,24 +3,24 @@ import Link from "next/link";
 import SignUpForm from "./SignUpForm";
 
 export default async function SignUpPage() {
-    return (
-        <PageWrapper>
-            <div className="flex-center w-full min-h-screen">
-                <div className="w-1/3 mx-auto border border-slate-800 rounded-lg p-8">
-                    <h1 className="text-3xl">Create your account</h1>
-                    <SignUpForm />
+  return (
+    <PageWrapper>
+      <div className="flex-center w-full min-h-screen">
+        <div className="w-1/3 mx-auto border border-slate-800 rounded-lg p-8">
+          <h1 className="text-3xl">Create your account</h1>
+          <SignUpForm />
 
-                    <div className="pt-8">
-                        <Link
-                            href={"/auth/sign-in"}
-                            className="text-slate-300 hover:text-slate-400 flex-center"
-                            style={{ textDecoration: "none" }}
-                        >
-                            Already have an account? Sign in
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </PageWrapper>
-    );
+          <div className="pt-8">
+            <Link
+              href={"/auth/sign-in"}
+              className="text-slate-300 hover:text-slate-400 flex-center"
+              style={{ textDecoration: "none" }}
+            >
+              Already have an account? Sign in
+            </Link>
+          </div>
+        </div>
+      </div>
+    </PageWrapper>
+  );
 }

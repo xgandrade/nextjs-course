@@ -1,10 +1,9 @@
-import { convert } from 'url-slug';
+import { convert } from "url-slug";
 
 export const slugfy = (value: string) => {
-
-    return convert(value, {
-        dictionary: {
-            "'": "",
-        }
-    });
-}
+  return convert(value, {
+    dictionary: {
+      "'": "",
+    },
+  });
+};

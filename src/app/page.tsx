@@ -7,7 +7,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
-export default async function Home({ searchParams }: { searchParams?: { page?: string, limit?: string } }) {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: { page?: string; limit?: string };
+}) {
   const currentPage = Number(searchParams?.page) || 1;
   const limit = Number(searchParams?.limit) || 10;
   const articles = await ArticleService.getArticles(currentPage, limit);
@@ -26,7 +30,10 @@ export default async function Home({ searchParams }: { searchParams?: { page?: s
             <div className="flex flex-col gap-4">
               {articles.data.map((article) => {
                 return (
-                  <div key={article.title} className="flex rounded-md bg-slate-800 py-4">
+                  <div
+                    key={article.title}
+                    className="flex rounded-md bg-slate-800 py-4"
+                  >
                     <div className="flex items-center ">
                       <div className="h-40 rounded-r-lg overflow-hidden">
                         <Image
@@ -42,9 +49,7 @@ export default async function Home({ searchParams }: { searchParams?: { page?: s
                       <h2 className="text-3xl mb-4 text-indigo-400">
                         {article.id} - {article.title}
                       </h2>
-                      <p className="flex-grow">
-                        {article.excerpt}
-                      </p>
+                      <p className="flex-grow">{article.excerpt}</p>
                       <Link
                         className="bg-slate-700 hover:bg-indigo-400/40 rounded-lg px-4 py-2 inline max-w-max"
                         href={getArticleUrl(article.slug)}
@@ -56,7 +61,10 @@ export default async function Home({ searchParams }: { searchParams?: { page?: s
                 );
               })}
               <div className="my-8">
-                <Pagination currentPage={articles.metadata.page} totalPages={articles.metadata.totalPages} />
+                <Pagination
+                  currentPage={articles.metadata.page}
+                  totalPages={articles.metadata.totalPages}
+                />
               </div>
             </div>
           </div>

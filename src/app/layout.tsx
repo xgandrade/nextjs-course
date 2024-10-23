@@ -20,7 +20,7 @@ export default async function RootLayout({
   const user = await getSession();
   return (
     <html lang="en">
-      <body className={cn('bg-slate-890 text-slate-300', inter.className)}>
+      <body className={cn("bg-slate-890 text-slate-300", inter.className)}>
         <Navbar user={user} />
         {children}
       </body>

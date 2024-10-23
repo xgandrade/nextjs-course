@@ -5,32 +5,33 @@ const MAX_RECORDS = 50;
 const MIN_OFFSET = 0;
 
 const Article = {
+  getOne: async ({
+    where,
+  }: {
+    where: Pick<Article, "slug"> | Pick<Article, "id">;
+  }) => {
+    const records = await prisma.article.findUnique({ where });
 
-    getOne: async ({ where }: { where: Pick<Article, "slug"> | Pick<Article, "id"> }) => {
-        const records = await prisma.article.findUnique({ where });
+    return records;
+  },
 
-        return records;
-    },
+  get: async ({ where = {}, orderBy = {}, limit = 10, offset = 0 }) => {
+    const take = Math.min(limit, MAX_RECORDS);
+    const skip = Math.max(offset, MIN_OFFSET);
 
-    get: async ({ where = {}, orderBy = {}, limit = 10, offset = 0 }) => {
+    return await prisma.article.findMany({
+      where,
+      orderBy,
+      take,
+      skip,
+    });
+  },
 
-        const take = Math.min(limit, MAX_RECORDS);
-        const skip = Math.max(offset, MIN_OFFSET);
-
-        return await prisma.article.findMany({
-            where,
-            orderBy,
-            take,
-            skip,
-        });
-    },
-
-    count: async ({ where = {} }) => {
-        return await prisma.article.count({
-            where
-        });
-    },
-
+  count: async ({ where = {} }) => {
+    return await prisma.article.count({
+      where,
+    });
+  },
 };
 
 export default Article;

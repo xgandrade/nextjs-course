@@ -1,5 +1,5 @@
 export type NavbarProps = React.ComponentProps<"nav"> & {
-    user?: any;
+  user?: any;
 };
 export type NavbarListProps = React.ComponentProps<"ul">;
 export type NavbarListItemProps = React.ComponentProps<"li">;
