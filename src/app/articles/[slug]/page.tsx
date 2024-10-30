@@ -9,8 +9,8 @@ type ArticleDetailPageProps = {
 
 export async function generateStaticParams() {
   const articles = await ArticleService.getArticles();
-  return articles.data.map((article: { slug: string }) => ({
-    slug: article.slug,
+  return articles.data.map((article) => ({
+    article,
   }));
 }
 

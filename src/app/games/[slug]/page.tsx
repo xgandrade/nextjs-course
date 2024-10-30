@@ -3,6 +3,10 @@ import { getGameImage } from "@/helpers/games";
 import GameService from "@/services/Games";
 import Image from "next/image";
 
+type GameDetailPageProps = {
+  params: { slug: string };
+};
+
 export async function generateStaticParams() {
   const games = await GameService.getGamesList();
   return games.data.map((game: { slug: string }) => ({
@@ -10,11 +14,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function GameDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function GameDetailPage({ params }: GameDetailPageProps) {
   const slug = params.slug;
   const game = await GameService.getGameBySlug(slug);
 
