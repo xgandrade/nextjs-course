@@ -9,15 +9,23 @@ type ArticleDetailPageProps = {
 
 export async function generateStaticParams() {
   const articles = await ArticleService.getArticles();
-  return articles.data.map((article) => ({
-    article,
+
+  if (!articles || !articles.data) {
+    console.error("No articles found");
+    return [];
+  }
+
+  const articleSlugs = articles.data.map((article) => ({
+    slug: article.slug,
   }));
+
+  return articleSlugs;
 }
 
 export default async function ArticleDetailPage({
   params,
 }: ArticleDetailPageProps) {
-  const slug = params.slug;
+  const { slug } = params;
   const article = await ArticleService.getArticleBySlug(slug);
 
   if (!article) {
