@@ -15,6 +15,8 @@ import { NavbarListItem } from "./NavbarListItem";
 import { NavbarListItemLink } from "./NavbarListItemLink";
 import { NavbarProps } from "./types";
 
+export const LOGO_GUI_GAMES = 'https://cdn6.aptoide.com/imgs/3/1/9/3192687553ee46402dcba4f8e9bb77ee_icon.png';
+
 export const Navbar = ({ className, user, ...props }: NavbarProps) => {
   return (
     <nav
@@ -26,7 +28,7 @@ export const Navbar = ({ className, user, ...props }: NavbarProps) => {
     >
       <div className="flex items-center justify-center my-4">
         <Image
-          src={process.env.LOGO_GUI_GAMES!}
+          src={LOGO_GUI_GAMES!}
           alt="Logo coringao"
           className="w-auto h-64"
           height={512}
