@@ -3,6 +3,8 @@ name: "CD (Entrega/Delivery Continua): Main Workflow"
 on:
   push:
     branches: [master, docker]
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   deploy:

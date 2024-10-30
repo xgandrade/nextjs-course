@@ -7,6 +7,14 @@ type ArticleDetailPageProps = {
   params: { slug: string };
 };
 
+// Função para gerar os parâmetros estáticos (obrigatório para a exportação estática)
+export async function generateStaticParams() {
+  const articles: any = await ArticleService.getArticles(); // Assumindo que existe um método para buscar todos os artigos
+  return articles.map((article: { slug: string }) => ({
+    slug: article.slug,
+  }));
+}
+
 export default async function ArticleDetailPage({
   params,
 }: ArticleDetailPageProps) {
