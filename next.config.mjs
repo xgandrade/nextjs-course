@@ -14,7 +14,7 @@ const nextConfig = {
             }
         ]
     },
-    output: 'standalone',
+    output: process.env.GITHUB_ACTION ? 'export' : 'standalone',
 };
 
 export default nextConfig;

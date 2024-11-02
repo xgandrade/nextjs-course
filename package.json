@@ -10,7 +10,11 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "start:migrate:prod": "npx prisma migrate deploy && node server.js"
+    "start:migrate:prod": "npx prisma migrate deploy && node server.js",
+    "deploy:prod": "npm run deploy:staging --prod",
+    "deploy:staging": "npm run build && vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN",
+    "test:e2e:open": "cypress open",
+    "test:e2e": "cypress run --config-file=cypress.config.js"
   },
   "dependencies": {
     "@prisma/client": "^5.19.1",
@@ -30,6 +34,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cypress": "^13.15.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "eslint-config-prettier": "^9.1.0",
