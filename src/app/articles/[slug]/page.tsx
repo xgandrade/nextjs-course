@@ -7,21 +7,6 @@ type ArticleDetailPageProps = {
   params: { slug: string };
 };
 
-export async function generateStaticParams() {
-  const articles = await ArticleService.getArticles();
-
-  if (!articles || !articles.data) {
-    console.error("No articles found");
-    return [];
-  }
-
-  const articleSlugs = articles.data.map((article) => ({
-    slug: article.slug,
-  }));
-
-  return articleSlugs;
-}
-
 export default async function ArticleDetailPage({
   params,
 }: ArticleDetailPageProps) {
@@ -61,3 +46,20 @@ export default async function ArticleDetailPage({
     </PageWrapper>
   );
 }
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const articles = await ArticleService.getArticles();
+
+  if (!articles || !articles.data) {
+    console.error("No articles found");
+    return [];
+  }
+
+  const articleSlugs = articles.data.map((article) => ({
+    slug: article.slug,
+  }));
+
+  return articleSlugs;
+}
+
+export const dynamicParams = false;

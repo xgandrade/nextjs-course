@@ -7,21 +7,6 @@ type GameDetailPageProps = {
   params: { slug: string };
 };
 
-export async function generateStaticParams() {
-  const games = await GameService.getGamesList();
-
-  if (!games || !games.data) {
-    console.error("No games found");
-    return [];
-  }
-
-  const gameSlugs = games.data.map((game) => ({
-    slug: game.slug,
-  }));
-
-  return gameSlugs;
-}
-
 export default async function GameDetailPage({ params }: GameDetailPageProps) {
   const { slug } = params;
   const game = await GameService.getGameBySlug(slug);
@@ -58,3 +43,20 @@ export default async function GameDetailPage({ params }: GameDetailPageProps) {
     </PageWrapper>
   );
 }
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const games = await GameService.getGamesList();
+
+  if (!games || !games.data) {
+    console.error("No games found");
+    return [];
+  }
+
+  const gameSlugs = games.data.map((game) => ({
+    slug: game.slug,
+  }));
+
+  return gameSlugs;
+}
+
+export const dynamicParams = false;
