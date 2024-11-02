@@ -15,14 +15,6 @@ jobs:
         run: npm install
       - name: Run Linter
         run: npm run lint
-  preview:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run Installation
-        run: npm install
-      - name: Run Preview Deployment
-        run: npm run deploy:preview
   # https://docs.cypress.io/guides/continuous-integration/github-actions#Testing-in-Chrome-and-Firefox-with-Cypress-Docker-Images
   test_e2e:
     runs-on: ubuntu-latest

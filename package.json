@@ -13,7 +13,6 @@
     "start:migrate:prod": "npx prisma migrate deploy && node server.js",
     "deploy:prod": "npm run deploy:staging --prod",
     "deploy:staging": "npm run build && vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN",
-    "deploy:preview": "node ./scripts/pullRequestPreview",
     "test:e2e:open": "cypress open",
     "test:e2e": "cypress run --config-file=cypress.config.js"
   },
