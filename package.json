@@ -14,7 +14,7 @@
     "deploy:prod": "npm run deploy:staging --prod",
     "deploy:staging": "npm run build && vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN",
     "test:e2e:open": "cypress open",
-    "test:e2e": "cypress run --config-file=cypress.config.js"
+    "test:e2e": "cypress run --config-file=cypress.config.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.19.1",
