@@ -12,11 +12,10 @@
     "lint:fix": "next lint --fix",
     "start:migrate:prod": "npx prisma migrate deploy && node server.js",
     "deploy:prod": "npm run deploy:staging --prod",
-    "deploy:staging": "npm run build && npm run deploy",
-    "deploy:preview": "npm run build && npm run deploy",
+    "deploy:staging": "npm run build && vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN",
+    "deploy:preview": "node ./scripts/pullRequestPreview",
     "test:e2e:open": "cypress open",
-    "test:e2e": "cypress run --config-file=cypress.config.ts",
-    "test:e2e:ci": "cypress run --headless --browser chrome"
+    "test:e2e": "cypress run --config-file=cypress.config.js"
   },
   "dependencies": {
     "@prisma/client": "^5.19.1",
